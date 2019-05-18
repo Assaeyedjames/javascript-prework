@@ -11,11 +11,11 @@ function buttonClicked(argButtonName) {
 
   function getMoveName(argMoveId) {
     if (argMoveId == 1) {
-      return 'kamień';
+      return 'tors'; // kamien
     } else if (argMoveId == 2) {
-      return 'papier';
+      return 'wątrobę'; // papier
     } else if (argMoveId == 3) {
-      return 'nożyce';
+      return 'głowę'; // nozyce
     } else {
       printMessage('Nie znam ruchu o id ' + argMoveId + '. Zakładam, że chodziło o "kamień".');
       return 'kamień';
@@ -25,35 +25,39 @@ function buttonClicked(argButtonName) {
   function displayResult(argPlayerMove, argComputerMove) {
   	var yourScore = document.getElementById('player').getElementsByClassName('score')[0],
   		  oppScore = document.getElementById('pc').getElementsByClassName('score')[0];
-    printMessage(argPlayerMove + ' VS ' + argComputerMove);
-	if (argPlayerMove == 'papier' && argComputerMove == 'kamień') {
+    printMessage(argPlayerMove + ' NA ' + argComputerMove);
+	if (argPlayerMove == 'chwyt' && argComputerMove == 'tors') {
       printMessage('Ależ obalenie!');
       i++;
       yourScore.innerHTML = i;
-      if(i >= 2){
+      if(i >= 5){
         printMessage('','win');
       }
-    } else if (argPlayerMove == 'kamień' && argComputerMove == 'nożyce') {
-      printMessage('Twarda pięść!');
+    } else if (argPlayerMove == 'cios' && argComputerMove == 'głowę') {
+      printMessage('Celne trafienie!');
       i++;
       yourScore.innerHTML = i;
-      if(i >= 2){
+      if(i >= 5){
         printMessage('','win');
       }
-    } else if (argPlayerMove == 'nożyce' && argComputerMove == 'papier') {
-      printMessage('Ostre kopnięcie!');
+    } else if (argPlayerMove == 'kopniak' && argComputerMove == 'wątrobę') {
+      printMessage('Szybkie kopnięcie!');
       i++;
       yourScore.innerHTML = i;
-      if(i >= 2){
+      if(i >= 5){
         printMessage('','win');
       }
-    } else if (argPlayerMove == argComputerMove) {
+    } else if (argPlayerMove == 'cios' && argComputerMove == 'tors') {
       printMessage('Sparowany!');
+    } else if (argPlayerMove == 'chwyt' && argComputerMove == 'wątrobę') {
+      printMessage('Że jak!?');
+    } else if (argPlayerMove == 'kopniak' && argComputerMove == 'głowę') {
+      printMessage('Uniknięty!');
     } else {
-      printMessage('Oberwałeś!<br/>Garda wyżej!');
+      printMessage('Chybiłeś!<br/>Weszła kontra!');
       i1++;
       oppScore.innerHTML = i1;
-      if(i1 >= 2){
+      if(i1 >= 5){
         printMessage('','lose');
       }
     }
@@ -68,11 +72,11 @@ function buttonClicked(argButtonName) {
 }
 
 buttonRock.addEventListener('click', function(){
-	buttonClicked('kamień');
+	buttonClicked('cios'); // kamien
 });
 buttonPaper.addEventListener('click', function(){
-	buttonClicked('papier');
+	buttonClicked('chwyt'); // papier
 });
 buttonScissors.addEventListener('click', function(){
-	buttonClicked('nożyce');
+	buttonClicked('kopniak'); // nozyce
 });
