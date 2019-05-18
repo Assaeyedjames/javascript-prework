@@ -1,0 +1,402 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+@import url("https://fonts.googleapis.com/css?family=Bungee|Quicksand:400,700&display=swap&subset=latin-ext");
+html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockquote, pre, a, abbr, acronym, address, big, cite, code, del, dfn, em, img, ins, kbd, q, s, samp, small, strike, strong, sub, sup, tt, var, b, u, i, center, dl, dt, dd, ol, ul, li, fieldset, form, label, legend, table, caption, tbody, tfoot, thead, tr, th, td, article, aside, canvas, details, embed, figure, figcaption, footer, header, hgroup, menu, nav, output, ruby, section, summary, time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+  background-image: url(/images/bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: 50% 50%;
+  font-family: "Quicksand";
+}
+
+body:after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  background: white;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  transition: all 0.1s ease-in-out;
+  opacity: 0;
+}
+
+body.flash:after {
+  animation: flash 2s;
+}
+
+body.flash .button {
+  pointer-events: none;
+}
+
+body.flash .content:after {
+  animation: darken 2s;
+}
+
+body.forwards .content:after {
+  animation: darken 2s forwards;
+  pointer-events: all;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after {
+  content: '';
+  content: none;
+}
+
+q:before, q:after {
+  content: '';
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.container {
+  overflow: hidden;
+}
+
+.container .content {
+  text-align: center;
+  max-width: 50%;
+  margin: 0 auto;
+  min-height: 100vh;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-direction: column;
+      flex-direction: column;
+  -ms-flex-pack: center;
+      justify-content: center;
+  background: rgba(0, 0, 0, 0.67);
+  padding: 15px;
+  box-sizing: border-box;
+}
+
+.container .content * {
+  color: #fff;
+}
+
+.container .content .counter {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: center;
+      justify-content: center;
+}
+
+.container .content .counter > * {
+  display: inline-block;
+  font-family: "Bungee";
+  font-size: 24px;
+}
+
+.container .content .counter .score {
+  font-size: 200px;
+}
+
+.container .content .counter p {
+  font-size: 48px;
+  line-height: 240px;
+  margin: 0 35px;
+}
+
+.container .content:after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  z-index: 2;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  transition: all 0.5s ease-in-out;
+  opacity: 0;
+}
+
+.container .fighters {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-align: end;
+      align-items: flex-end;
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+}
+
+.container .fighters .fighter {
+  height: 100%;
+  position: absolute;
+}
+
+.container .fighters .fighter:first-child {
+  left: 0;
+  transform: translateX(-15%);
+}
+
+.container .fighters .fighter:nth-child(2) {
+  right: 0;
+  transform: translateX(15%);
+}
+
+.container .fighters .fighter img {
+  width: auto;
+  height: 100%;
+  display: block;
+}
+
+.decision {
+  font-size: 18px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 50px auto 15px;
+}
+
+.button {
+  border: none;
+  padding: 25px 35px;
+  display: inline-block;
+  margin: 15px;
+  font-family: "Bungee";
+  font-size: 28px;
+  line-height: 1;
+  border-top-right-radius: 25px;
+  border-bottom-left-radius: 25px;
+  cursor: pointer;
+  transition: 0.15s ease-in-out;
+}
+
+.button:hover {
+  transform: scale(1.1) rotate(8deg);
+}
+
+.button.rock {
+  background: #5d4e4a;
+}
+
+.button.paper {
+  background: #fdf1e9;
+  color: #383c3f;
+}
+
+.button.scissors {
+  background: #383c3f;
+}
+
+h1 {
+  font-size: 72px;
+  font-family: "Bungee";
+}
+
+h2 {
+  font-size: 36px;
+  margin: 15px auto;
+}
+
+.messages {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%) scale(0.1);
+  pointer-events: none;
+  transition: 0.2s ease-in-out;
+  opacity: 0;
+  z-index: 99;
+  width: 65%;
+}
+
+.messages.appear {
+  animation: appear 2s;
+}
+
+.messages.forwards {
+  animation: appear 2s forwards;
+  pointer-events: all;
+}
+
+.messages div {
+  margin: 15px;
+  font-size: 48px;
+  font-family: "Bungee";
+  padding: 25px 50px;
+}
+
+.messages div:nth-child(2) {
+  font-size: 100px;
+}
+
+@keyframes appear {
+  0% {
+    transform: translate(-50%, -50%) scale(0.1);
+    opacity: 0;
+  }
+  10% {
+    transform: translate(-50%, -50%) scale(1.5);
+    opacity: 1;
+  }
+  100% {
+    transform: translate(-50%, -50%) scale(1.25);
+    opacity: 1;
+  }
+}
+
+@keyframes flash {
+  0% {
+    opacity: 0;
+  }
+  5% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0;
+  }
+}
+
+@keyframes darken {
+  0% {
+    opacity: 0;
+  }
+  20% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+@media (max-width: 1440px) {
+  .container .content {
+    max-width: 70%;
+  }
+  .container .fighters .fighter:first-child {
+    transform: translateX(-25%);
+  }
+  .container .fighters .fighter:nth-child(2) {
+    transform: translateX(25%);
+  }
+  .messages div {
+    font-size: 36px;
+  }
+  .messages div:nth-child(2) {
+    font-size: 88px;
+  }
+}
+
+@media (max-width: 1280px) {
+  .container .fighters .fighter:first-child {
+    transform: translateX(-35%);
+  }
+  .container .fighters .fighter:nth-child(2) {
+    transform: translateX(35%);
+  }
+  .messages div {
+    padding: 15px 5px;
+    margin: 0;
+  }
+  .messages div:nth-child(2) {
+    font-size: 58px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .container .content {
+    max-width: 80%;
+  }
+}
+
+@media (max-width: 768px) {
+  .messages div {
+    font-size: 25px;
+  }
+  .messages div:nth-child(2) {
+    font-size: 48px;
+  }
+  .button {
+    display: block;
+    margin: 25px auto;
+    max-width: 200px;
+  }
+  h1 {
+    font-size: 64px;
+  }
+  h2 {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 600px) {
+  .container .content {
+    max-width: 100%;
+  }
+  .container .content .counter > * {
+    font-size: 16px;
+  }
+  .container .content .counter .score {
+    font-size: 72px;
+  }
+  .container .content .counter p {
+    line-height: 1;
+  }
+  h2 {
+    font-size: 20px;
+  }
+  h1 {
+    font-size: 40px;
+  }
+  .decision {
+    font-size: 16px;
+    margin: 25px auto 10px;
+  }
+  .button {
+    font-size: 20px;
+    margin: 15px auto;
+    padding: 15px 25px;
+    font-size: 18px;
+  }
+  .messages div {
+    font-size: 16px;
+    padding: 5px;
+  }
+  .messages div:nth-child(2) {
+    font-size: 24px;
+  }
+}
+/*# sourceMappingURL=style.css.map */

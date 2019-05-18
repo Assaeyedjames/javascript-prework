@@ -1,9 +1,10 @@
-var argButtonName, buttonPaper, buttonRock, buttonScissors;
+var argButtonName, buttonPaper, buttonRock, buttonScissors, i, i1;
 
 buttonRock = document.getElementById('button-rock');
 buttonPaper = document.getElementById('button-paper');
 buttonScissors = document.getElementById('button-scissors');
-
+i = 0;
+i1 = 0;
 function buttonClicked(argButtonName) {
   clearMessages();
   var argComputerMove, argMoveId, argPlayerMove, computerMove, playerInput, playerMove, randomNumber;
@@ -22,18 +23,42 @@ function buttonClicked(argButtonName) {
   }
 
   function displayResult(argPlayerMove, argComputerMove) {
+  	var yourScore = document.getElementById('player').getElementsByClassName('score')[0],
+  		  oppScore = document.getElementById('pc').getElementsByClassName('score')[0];
+    printMessage(argPlayerMove + ' VS ' + argComputerMove);
 	if (argPlayerMove == 'papier' && argComputerMove == 'kamień') {
-      printMessage('Wygrywasz!');
+      printMessage('Ależ obalenie!');
+      i++;
+      yourScore.innerHTML = i;
+      if(i >= 2){
+        printMessage('','win');
+      }
     } else if (argPlayerMove == 'kamień' && argComputerMove == 'nożyce') {
-      printMessage('Wygrywasz!');
+      printMessage('Twarda pięść!');
+      i++;
+      yourScore.innerHTML = i;
+      if(i >= 2){
+        printMessage('','win');
+      }
     } else if (argPlayerMove == 'nożyce' && argComputerMove == 'papier') {
-      printMessage('Wygrywasz!');
+      printMessage('Ostre kopnięcie!');
+      i++;
+      yourScore.innerHTML = i;
+      if(i >= 2){
+        printMessage('','win');
+      }
     } else if (argPlayerMove == argComputerMove) {
-      printMessage('Remis!');
+      printMessage('Sparowany!');
     } else {
-      printMessage('Przegrywasz :(');
+      printMessage('Oberwałeś!<br/>Garda wyżej!');
+      i1++;
+      oppScore.innerHTML = i1;
+      if(i1 >= 2){
+        printMessage('','lose');
+      }
     }
-    printMessage('Zagrałem ' + argComputerMove + ', a Ty ' + argPlayerMove);
+    console.log(i);
+    console.log(i1);
   }
 
   playerMove = argButtonName;
